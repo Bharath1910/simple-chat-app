@@ -1,5 +1,4 @@
-import mongoose from 'mongoose';
-
+const mongoose = require('mongoose');
 const ChatData = new mongoose.Schema({
     fromUser: String,
     toUser: String,
