@@ -2,12 +2,8 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../Schema/users')
 const ChatData = require('../Schema/chatData');
-const chatData = require('../Schema/chatData');
-
 
 router = express.Router();
-
-
 
 // example body
 
