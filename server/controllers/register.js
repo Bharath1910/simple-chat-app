@@ -13,7 +13,7 @@ router.post('/register', hashPass, async (req, res) => {
     } else {
         const user = await User.create({ username, password: req.hash, connections: [] })
         jwt.sign({ token: user._id }, process.env.JWT_SECRET, function(err, token) {
-            res.status(200).json({ info: "Registered successfully!", token })
+            res.status(201).json({ info: "Registered successfully!", token })
         })
     }
 })
