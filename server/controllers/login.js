@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
                 const token = jwt.sign(user._id.toString(), process.env.JWT_SECRET)
                 res.status(200).json({ info: "Logged in", token })
             } else {
-                res.status(403).json({ info: "Wrong Password, please try again" })
+                res.status(403).json({ error: "Wrong Password, please try again" })
             }
         })
     }
