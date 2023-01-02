@@ -3,8 +3,9 @@ const express = require('express');
 
 const register = require('./controllers/register');
 const login = require('./controllers/login');
-const search = require('./controllers/search')
-const getData = require('./controllers/getData')
+const search = require('./controllers/search');
+const getData = require('./controllers/getData');
+const postData = require('./controllers/postData');
 
 const app = express();
 
@@ -17,6 +18,8 @@ app.use('/api', login);
 
 app.use('/api', search);
 
-app.use('/api', getData)
+app.use('/api', getData);
+
+app.use('/api', postData)
 
 app.listen(3000)
