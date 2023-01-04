@@ -13,14 +13,17 @@ router = express.Router();
 // }
 
 router.post('/getData', (req, res) => {
+    console.log("get data hit")
     if (req.body.token) {
         jwt.verify(req.body.token, process.env.JWT_SECRET, async function(error, token) {
-            const user = await User.findById(token.token)
+            console.log(token)
+            const user = await User.findById(token)
+            console.log(user)
             const username = user.username
             const toUser = req.body.toUser
 
             const chatData = await ChatData.findOne({ $and: [ { users: username }, { users: toUser } ] })
-            
+            console.log(chatData)
             if (chatData) {
                 res.status(200).json({ dataId: chatData._id, data: chatData.chatData })
             } else {
