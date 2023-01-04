@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
+import List from './List';
+import Search from './Search';
+
 
 function Dashboard() {
     return (
@@ -12,8 +15,8 @@ function Dashboard() {
             </nav>
 
             <Routes>
-                <Route path='/list' element={<h1>List</h1>} />
-                <Route path='/search' element={<h1>Search</h1>} />
+                <Route path='/list' element={<List />} />
+                <Route path='/search' element={<Search />} />
             </Routes>
         </>
     )
