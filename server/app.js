@@ -6,6 +6,7 @@ const login = require('./controllers/login');
 const search = require('./controllers/search');
 const getData = require('./controllers/getData');
 const postData = require('./controllers/postData');
+const getConnection = require('./controllers/getConnection');
 
 const app = express();
 
@@ -20,6 +21,8 @@ app.use('/api', search);
 
 app.use('/api', getData);
 
-app.use('/api', postData)
+app.use('/api', postData);
+
+app.use('/api', getConnection);
 
 app.listen(5500)
