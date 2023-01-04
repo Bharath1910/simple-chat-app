@@ -11,10 +11,17 @@ router.post('/register', hashPass, async (req, res) => {
     if (password !== rePassword) {
         res.status(401).json({ error: "Password does not match" })
     } else {
-        const user = await User.create({ username, password: req.hash, connections: [] })
-        jwt.sign({ token: user._id }, process.env.JWT_SECRET, function(err, token) {
-            res.status(201).json({ info: "Registered successfully!", token })
-        })
+        const findUser = await User.findOne({ username });
+        if (findUser) {
+            res.status(401).json({ error: "User already exists" })
+        }
+
+        else {
+            const user = await User.create({ username, password: req.hash, connections: [] })
+            jwt.sign({ token: user._id }, process.env.JWT_SECRET, function(err, token) {
+                res.status(201).json({ info: "Registered successfully!", token })
+            })
+        }
     }
 })
 
