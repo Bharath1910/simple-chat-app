@@ -9,7 +9,7 @@ function Register() {
     const password = useRef()
     const rePassword = useRef()
 
-    function test() {
+    function register() {
         fetch('http://localhost:5500/api/register', {
             method: 'POST',
             headers: {
@@ -30,13 +30,15 @@ function Register() {
 
                 setError(json.error)
                 throw new Error(json.error)
-            } else {
+            } 
+            
+            else {
                 setError(null)
                 cookies.set("token", json.token)
                 navigate('/dashboard')
             }
         })
-        .catch(error => console.log(error))
+        .catch(err => console.log(err))
     }
 
     return (
@@ -55,7 +57,7 @@ function Register() {
                 <p>Confirm Password: </p>
                 <input ref={rePassword} type="password" />
             </label>
-            <button onClick={test}>Register</button>
+            <button onClick={register}>Register</button>
             {error && <p>{error}</p>}
         </>
     )
